@@ -7,14 +7,12 @@ const { Movie, validateMovie } = require('../models/movie')
 router.get('/', async (req, res) => {
     const movies = await Movie.find().sort('title')
     if(!movies) return res.status(404).send('No movies available')
-
     res.send(movies)
 })
 
 router.get('/:id', async (req, res) => {
     const movie = await Movie.findById(req.params.id)
     if(!movie) return res.status(404).send('No movie belongs to this id')
-
     res.send(movie)
 })
 
@@ -35,8 +33,8 @@ router.post('/', async (req, res) => {
         dailyRentalRate: req.body.dailyRentalRate
     })
 
-    movie = await movie.save()
-    res.send(movie)
+    const result = await movie.save()
+    res.send(result)
 })
 
 router.put('/:id', async (req, res) => {
