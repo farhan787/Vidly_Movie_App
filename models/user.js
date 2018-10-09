@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         minlength: 6,
-        maxlength: 1024,
+        maxlength: 1024,    // 1024 because we will hash the password 
         required: true
     },
     isAdmin: {
@@ -48,3 +48,7 @@ function validateUser(reqUser){
 module.exports = {
     User, validateUser
 }
+
+// Note: The password from client side is maxlength 255 and in database
+// its maxlength is 1024 because we may hash the client side password
+// for security purposes
