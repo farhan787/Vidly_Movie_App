@@ -48,7 +48,3 @@ function validateUser(reqUser){
 module.exports = {
     User, validateUser
 }
-
-// Note: The password from client side is maxlength 255 and in database
-// its maxlength is 1024 because we may hash the client side password
-// for security purposes

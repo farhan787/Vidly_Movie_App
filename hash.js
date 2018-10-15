@@ -26,4 +26,5 @@ function run(){
     // countSaltCharacters()
     validate('2341')
 }
+
 run()
