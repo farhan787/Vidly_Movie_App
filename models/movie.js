@@ -8,7 +8,7 @@ const movieSchema = new mongoose.Schema({
         required: true,
         trim: true,
         minlength: 3,
-        maxlength: 255      // because we don't want malicious client to send some large string that may cause problem to our application
+        maxlength: 255
     },
     genre: {
         type: GenreSchema,
@@ -17,7 +17,7 @@ const movieSchema = new mongoose.Schema({
     numberInStock: {
         type: Number,
         required: true,
-        min: 0,         // we don't want negative, so set minimum to 0
+        min: 0,    
         max: 255
     },
     dailyRentalRate: {

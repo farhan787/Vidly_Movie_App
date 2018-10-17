@@ -1,22 +1,16 @@
-// authenticating the user
-
 const express = require('express')
 const router = express.Router()
 const Joi = require('joi')
 const bcrypt = require('bcrypt')
+const validate = require('../middleware/validate')
 
 const { User } = require('../models/user')
 
-router.post('/', async (req, res) => {
-    const { error } = validate(req.body)
-    if(error) return res.status(400).send(error.details[0].message)
+router.post('/', validate(validateAuth), async (req, res) => {
 
-    // Validating user email
     let user = await User.findOne({ email: req.body.email })
     if(!user) return res.status(400).send('Invalid email or password')
 
-    // Validating user password
-    // compare method will remove the salt itself while decrypting the password
     const validPassword = await bcrypt.compare(req.body.password, user.password)
     if(!validPassword) return res.status(400).send('Invalid email or password')
 
@@ -24,7 +18,7 @@ router.post('/', async (req, res) => {
     res.send(token)
 })
 
-function validate(reqAuth){
+function validateAuth(reqAuth){
     const schema = {
         email: Joi.string().email({ minDomainAtoms: 2 }).min(5).max(255).required(),
         password: Joi.string().min(6).max(255).required()

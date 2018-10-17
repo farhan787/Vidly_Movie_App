@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Joi = require('joi')
 const Fawn = require('fawn')    // returns class
+const moment = require('moment')
 
 Fawn.init(mongoose)
 
@@ -33,7 +34,7 @@ const rentalSchema = mongoose.Schema({
                 required: true,
                 trim: true,
                 minlength: 3,
-                maxlength: 255      // because we don't want malicious client to send some large string that may cause problem to our application
+                maxlength: 255
             },
             dailyRentalRate: {
                 type: Number,
@@ -57,6 +58,20 @@ const rentalSchema = mongoose.Schema({
         min: 0
     }
 })
+
+rentalSchema.statics.lookup = function(customerId, movieId) {
+        return this.findOne({
+        'customer._id': customerId,
+        'movie._id': movieId
+    })
+}
+
+rentalSchema.methods.return = function() {
+    this.dateReturned = new Date()
+
+    const rentalDays = moment().diff(this.dateOut, 'days')
+    this.rentalFee = rentalDays * this.movie.dailyRentalRate
+}
 
 const Rental = mongoose.model('Rental', rentalSchema)
 

@@ -38,16 +38,11 @@ router.post('/', async (req, res) => {
         }
     })
 
-    // rental = await rental.save()
-    // movie.numberInStock--;
-    // movie.save();
-
-    // Using Fawn for transaction
     try{
         new Fawn.Task()
         .save('rentals', rental)
         .update('movies', { _id: movie._id }, {
-            $inc: { numberInStock: -1 }     // decrementing numberInStock
+            $inc: { numberInStock: -1 }
         })
         .run()
         res.send(rental)
@@ -58,4 +53,4 @@ router.post('/', async (req, res) => {
 
 })
 
-module.exports = router
+module.exports = router;
