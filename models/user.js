@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         minlength: 6,
-        maxlength: 1024,    // 1024 because we will hash the password 
+        maxlength: 1024,
         required: true
     },
     isAdmin: {

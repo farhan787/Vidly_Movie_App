@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Joi = require('joi')
-const Fawn = require('fawn')    // returns class
+const Fawn = require('fawn')
 const moment = require('moment')
 
 Fawn.init(mongoose)
@@ -16,7 +16,6 @@ const rentalSchema = mongoose.Schema({
             },
             isGold: {
                 type: Boolean,
-                default: false
             },
             phone: {
                 type: String,
@@ -62,7 +61,15 @@ const rentalSchema = mongoose.Schema({
 rentalSchema.statics.lookup = function(customerId, movieId) {
         return this.findOne({
         'customer._id': customerId,
-        'movie._id': movieId
+        'movie._id': movieId,
+    })
+}
+
+rentalSchema.statics.rentalExist = function(customerId, movieId) {
+    return this.findOne({
+        'customer._id': customerId,
+        'movie._id': movieId,
+        'dateReturned': { $exists: false }
     })
 }
 
@@ -70,7 +77,12 @@ rentalSchema.methods.return = function() {
     this.dateReturned = new Date()
 
     const rentalDays = moment().diff(this.dateOut, 'days')
-    this.rentalFee = rentalDays * this.movie.dailyRentalRate
+    rentalFee = rentalDays * this.movie.dailyRentalRate
+
+    if(rentalFee === 0)
+        rentalFee = this.movie.dailyRentalRate
+
+    this.rentalFee = rentalFee
 }
 
 const Rental = mongoose.model('Rental', rentalSchema)

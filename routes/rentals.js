@@ -7,7 +7,7 @@ const { Customer } = require('../models/customer')
 const { Movie } = require('../models/movie')
 
 router.get('/', async (req, res) => {
-    const rentals = await Rental.find()
+    const rentals = await Rental.find().sort('customer.name')
     if(!rentals) return res.status(404).send("No rentals")
     
     res.send(rentals)
@@ -23,13 +23,17 @@ router.post('/', async (req, res) => {
     const movie = await Movie.findById(req.body.movieId)
     if(!movie) return res.status(400).send('Invalid Movie')
 
-    if(movie.numberInStock === 0) return res.status(400).send(`${movie.title} not is stock`)
+    const exist = await Rental.rentalExist(req.body.customerId, req.body.movieId)
+    if(exist) return res.status(400).send('You already have this movie on rent.')
+
+    if(movie.numberInStock === 0) return res.status(400).send(`${movie.title} not in stock`)
 
     const rental = new Rental({
         customer: {
             _id: customer._id,
             name: customer.name,
-            phone: customer.phone
+            phone: customer.phone,
+            isGold: customer.isGold
         },
         movie: {
             _id: movie._id,

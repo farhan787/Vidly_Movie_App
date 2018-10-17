@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const _ = require('lodash')     // for picking selective properties from objects
+const _ = require('lodash') 
 const bcrypt = require('bcrypt')
 const config = require('config')
 const jwt = require('jsonwebtoken')
@@ -8,7 +8,6 @@ const auth = require('../middleware/auth')
 
 const { User, validateUser } = require('../models/user')
 
-// for my use -- personal  testing
 router.get('/', async (req, res) => {
     const users = await User.find().select('-password -__v').sort('name')
     if(!users) return res.status(400).send('No users')  
@@ -25,11 +24,9 @@ router.post('/', async (req, res) => {
     const { error } = validateUser(req.body)
     if(error) return res.status(400).send(error.details[0].message)
 
-    // To check if the user with that email already exist or not
     let user = await User.findOne({ email: req.body.email })
     if(user) return res.status(400).send('User with this email already exists')
 
-    // if user doesn't exist then create a new user
     user = new User(_.pick(req.body, ['name', 'email', 'password']))
     
     const salt = await bcrypt.genSalt(10)

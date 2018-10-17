@@ -10,13 +10,13 @@ const validate = require('../middleware/validate')
 router.post('/', [auth, validate(validateReturn)], async (req, res) => {
     
     const rental = await Rental.lookup(req.body.customerId, req.body.movieId)
-
     if(!rental) return res.status(404).send('Rental not found')
 
-    if(rental.dateReturned) return res.status(400).send('Return already processed')
+    const existRental = await Rental.rentalExist(req.body.customerId, req.body.movieId)
+    if(!existRental) return res.status(400).send('Return already processed')
 
-    rental.return();
-    await rental.save()
+    existRental.return();
+    await existRental.save()
     
     await Movie.update({ _id: rental.movie._id }, {
         $inc: { numberInStock: 1 }
