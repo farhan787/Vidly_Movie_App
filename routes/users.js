@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
     res.send(users)
 })
 
-// for getting currently logged in user
 router.get('/me', auth, async (req, res) => {
     const user = await User.findById(req.user._id).select('-password')
     res.send(user) 
