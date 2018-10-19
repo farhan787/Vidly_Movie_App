@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Auth API Endpoint</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>API Endpoints</h3>
+                    <strong>API</strong>
+                </div>
+
+                <ul class="list-unstyled components">
+                    
+                    <li>
+                       
+                       <a href="../index.html">
+                            <i class="glyphicon glyphicon-home"></i>
+                            Home
+                        </a>
+                        <a href="users.html">
+                            <i class="glyphicon glyphicon-briefcase"></i>
+                            Users
+                        </a>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-ok"></i>
+                            Auth
+                        </a>
+                        <a href="customers.html">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Customers
+                        </a>
+                        <a href="rentals.html">
+                            <i class="glyphicon glyphicon-shopping-cart"></i>
+                            Rentals
+                        </a>
+                        <a href="genres.html">
+                            <i class="glyphicon glyphicon-folder-open"></i>
+                            Genres
+                        </a>
+                        <a href="movies.html">
+                            <i class="glyphicon glyphicon-facetime-video"></i>
+                            Movies
+                        </a>
+                        <a href="returns.html">
+                            <i class="glyphicon glyphicon-share-alt"></i>
+                            Returns
+                        </a>
+  
+                </ul>
+
+                <ul class="list-unstyled CTAs">
+                    <li><a target="_blank" href="https://github.com/farhan787/Vidly_Movie_App" class="download">Github Repository</a></li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content" style="margin-bottom: 250px;">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Toggle Sidebar</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </nav>
+          
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<h1>
+					Auth <small>API Endpoint</small>
+				</h1>
+			</div>
+			<div class="jumbotron">
+				<h2>
+					About
+				</h2>
+				<p>
+					This endpoint authenticates the users stored in the database. It returns JSON Web Token (JWT) which contains all the information about that user and will help users to perform many operations in other endpoints as well. Send your request to <i> vidly-app.herokuapp.com/api/auth</i>. It responds to only 1 POST HTTP method.
+				</p>
+				<p>
+					<a class="btn btn-primary btn-large" target="_blank" href="https://github.com/farhan787/Vidly_Movie_App">Visit Code</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h2>
+                POST &emsp;<small>/api/auth</small>
+			</h2>
+			<p>
+				Send a POST request to this endpoint with email and password in the body of the request. It will return a JSON Web Token (JWT) which you can use as x-auth-token in the header of the request while using various POST requests for different endpoints, so the server will be able to identify you, whether you are a trusted user or some malicious client who wants to access our database.
+			</p>
+		</div>
+	</div>
+</div>  
+<!--                content ends here-->
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Made By: Muhammad Farhan &copy; 2018</p>
+            <div>
+                <a target="_blank" href="https://www.github.com/farhan787" class="fa fa-github"></a>
+                <a target="_blank" href="https://www.facebook.com/farhanshah787" class="fa fa-facebook"></a>
+                <a target="_blank" href="https://www.linkedin.com/in/farhan-shah-18415b148/" class="fa fa-linkedin"></a>
+            </div>
+          </footer> 
+
+
+                 <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>
+    </body>
+</html>
