@@ -22,7 +22,7 @@ router.post('/', [auth, validate(validateReturn)], async (req, res) => {
         $inc: { numberInStock: 1 }
     })
 
-    return res.send(rental)
+    return res.send(existRental)
 })
 
 function validateReturn(reqReturn){
