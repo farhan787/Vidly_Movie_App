@@ -94,7 +94,7 @@
 					About
 				</h2>
 				<p>
-					This endpoint performs operations on the genres stored in the MongoDB database. You have to send your requests to <i> vidly-app.herokuapp.com/api/genres</i>. It responds to 4 HTTP methods, GET, POST, PUT and DELETE. 
+					This endpoint performs operations on the genres stored in the MongoDB database. You have to send your requests to <i>/api/genres</i>. It responds to 4 HTTP methods, GET, POST, PUT and DELETE. 
 				</p>
 				<p>
 					<a class="btn btn-primary btn-large" target="_blank" href="https://github.com/farhan787/Vidly_Movie_App">Visit Code</a>
@@ -116,7 +116,7 @@
 		</div>
 		<div class="col-md-6">
 			<h2>
-				GET with genre id &emsp;<small>/api/genres/genreId</small>
+				GET with genre id &emsp;<small>/api/genres/id</small>
 			</h2>
 			<p>
 				A GET request with the genre id to this endpoint, returns a genre that belongs to the genre id embedded in the url genreId.
@@ -134,7 +134,7 @@
 		</div>
 		<div class="col-md-6">
 			<h2>
-				PUT &emsp; <small>/api/genres/genreId</small>
+				PUT &emsp; <small>/api/genres/id</small>
 			</h2>
 			<p>
 				If we are authenticated user, we can update the genre stored in the database via PUT request by sending the new body of genre along with the x-auth-token in the request header as discussed in POST request.
@@ -144,7 +144,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<h2>
-				DELETE &emsp; <small>/api/genres/genreId</small>
+				DELETE &emsp; <small>/api/genres/id</small>
 			</h2>
 			<p>
 				If we are authenticated user and admin, we can delete the genre stored in the database via DELETE request along with the genre id in the url.

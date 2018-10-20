@@ -94,7 +94,7 @@
 					About
 				</h2>
 				<p>
-					This endpoint performs operations on the movies stored in the MongoDB database. You have to send your requests to <i> vidly-app.herokuapp.com/api/movies</i>. It responds to 4 HTTP methods, GET, POST, PUT and DELETE. 
+					This endpoint performs operations on the movies stored in the MongoDB database. You have to send your requests to <i>/api/movies</i>. It responds to 4 HTTP methods, GET, POST, PUT and DELETE. 
 				</p>
 				<p>
 					<a class="btn btn-primary btn-large" target="_blank" href="https://github.com/farhan787/Vidly_Movie_App">Visit Code</a>
@@ -116,7 +116,7 @@
 		</div>
 		<div class="col-md-6">
 			<h2>
-				GET with movie id &emsp;<small>/api/movies/movieId</small>
+				GET with movie id &emsp;<small>/api/movies/id</small>
 			</h2>
 			<p>
 				A GET request with the movie id to this endpoint, returns a movie that belongs to the movie id embedded in the url movieId.
@@ -134,7 +134,7 @@
 		</div>
 		<div class="col-md-6">
 			<h2>
-				PUT &emsp; <small>/api/movies/movieId</small>
+				PUT &emsp; <small>/api/movies/id</small>
 			</h2>
 			<p>
 				If we are authenticated user, we can update the movie stored in the database via PUT request by sending the new body of movie along with the x-auth-token in the request header as discussed in POST request.
@@ -144,7 +144,7 @@
 	<div class="row">
 		<div class="col-md-6">
 			<h2>
-				DELETE &emsp; <small>/api/movie/movieId</small>
+				DELETE &emsp; <small>/api/movie/id</small>
 			</h2>
 			<p>
 				If we are authenticated user and admin, we can delete a movie stored in the database via DELETE request along with the movie id in the url.
