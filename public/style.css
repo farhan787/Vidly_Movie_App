@@ -58,6 +58,23 @@ i, span {
     align-items: stretch;
 }
 
+.request-body {
+    background-color: #fafafa;
+    color: black;
+    display: flex;
+    justify-content: center;
+    margin: 0px ;
+    /* align-items: center; */
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
+.request-body-content {
+    padding: 10px;
+    background-color: #fafafa;
+    box-shadow: -3px -3px 5px #ffffff70, 3px 3px 15px #00000090;
+}
+
 #sidebar {
     min-width: 250px;
     max-width: 250px;
@@ -189,41 +206,37 @@ a.article, a.article:hover {
     color: #fff !important;
 }
 
-
-/* my footer  */
-
-
-.footer{
+.footer {
     color: white;
     background-color: black;
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    font-size: 18px;
+    font-size: 14px;
     text-align: center;
     padding-top: 7px;
     margin-top: 500px;
 }
 
-.footer p{
+.footer p {
     padding-left: 30px;
     float: left;
 }
 
-.footer div{
+.footer div {
     padding-right: 50px;
     float: right;
     color: white;
-    font-size: 30px;
+    font-size: 18px;
 }
 
-.footer a{
+.footer a {
     padding-left: 30px;
 }
 
-.footer a:hover{
-    font-size: 40px;
+.footer a:hover {
+    font-size: 20px;
 }
 
 
@@ -291,5 +304,16 @@ a.article, a.article:hover {
     }
     #sidebarCollapse span {
         display: none;
+    }
+
+    .footer {
+        font-size: 10px;
+        color: white;
+    }
+    .footer a {
+        font-size: 14px;
+    }
+    .footer a:hover {
+        font-size: 14px;
     }
 }

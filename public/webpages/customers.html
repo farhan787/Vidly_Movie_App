@@ -1,183 +1,166 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-        <title>Customers API Endpoint</title>
+    <title>Customers API Endpoint</title>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../style.css">
-    </head>
-    <body>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="../style.css" />
 
-        <div class="wrapper">
-            <!-- Sidebar Holder -->
-            <nav id="sidebar">
-                <div class="sidebar-header">
-                    <h3>API Endpoints</h3>
-                    <strong>API</strong>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Sidebar Holder -->
+      <nav id="sidebar"></nav>
+
+      <!-- Page Content Holder -->
+      <div id="content" style="margin-bottom: 250px;">
+        <nav class="navbar navbar-default">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button
+                type="button"
+                id="sidebarCollapse"
+                class="btn btn-info navbar-btn"
+              >
+                <i class="glyphicon glyphicon-align-left"></i>
+                <span>Toggle Sidebar</span>
+              </button>
+            </div>
+          </div>
+        </nav>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="page-header">
+                <h1>Customers <small>API Endpoint</small></h1>
+              </div>
+              <div class="jumbotron">
+                <h2>
+                  About
+                </h2>
+                <p>
+                  This endpoint performs operations on the customers stored in
+                  the MongoDB database. You have to send your requests to
+                  <i>/api/customers</i>. It responds to 4 HTTP methods, GET,
+                  POST, PUT and DELETE.
+                </p>
+                <p>
+                  <a
+                    class="btn btn-primary btn-large"
+                    target="_blank"
+                    href="https://github.com/farhan787/Vidly_Movie_App"
+                    >Visit Code</a
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h2>GET &emsp;<small>/api/customers</small></h2>
+              <p>
+                A GET request to this endpoint, returns a list of all the
+                customers stored in the MongoDB database.
+              </p>
+              <p>
+                <a
+                  class="btn"
+                  target="_blank"
+                  href="https://vidly-app.herokuapp.com/api/customers"
+                  >Send request »</a
+                >
+              </p>
+            </div>
+            <div class="col-md-6">
+              <h2>GET with id &ensp;<small>/api/customers/id</small></h2>
+              <p>
+                A GET request with the customer id to this endpoint, returns a
+                customer that belongs to the customer id embedded in the url
+                customerId.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h2>POST &emsp; <small>/api/customers</small></h2>
+              <p>
+                We can post a customer if we are authenticated user via POST
+                request, send name and phone in the body of the request, also
+                send x-auth-token in the request header and the value for this
+                x-auth-token will be the authentication token, that we get from
+                the POST method of <b><a href="auth.html">Auth</a></b> endpoint.
+              </p>
+
+              <code class="request-body">
+                <div class="request-body-content">
+                  {<br />
+                  &nbsp;"name": "testUser1", <br />
+                  &nbsp;"phone": "xxx-xxx-xxx" <br />
+                  }
                 </div>
-
-                <ul class="list-unstyled components">
-                    
-                    <li>
-                       
-                       <a href="../index.html">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Home
-                        </a>
-                        <a href="users.html">
-                            <i class="glyphicon glyphicon-briefcase"></i>
-                            Users
-                        </a>
-                        <a href="auth.html">
-                            <i class="glyphicon glyphicon-ok"></i>
-                            Auth
-                        </a>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Customers
-                        </a>
-                        <a href="rentals.html">
-                            <i class="glyphicon glyphicon-shopping-cart"></i>
-                            Rentals
-                        </a>
-                        <a href="genres.html">
-                            <i class="glyphicon glyphicon-folder-open"></i>
-                            Genres
-                        </a>
-                        <a href="movies.html">
-                            <i class="glyphicon glyphicon-facetime-video"></i>
-                            Movies
-                        </a>
-                        <a href="returns.html">
-                            <i class="glyphicon glyphicon-share-alt"></i>
-                            Returns
-                        </a>
-  
-                </ul>
-
-                <ul class="list-unstyled CTAs">
-                    <li><a target="_blank" href="https://github.com/farhan787/Vidly_Movie_App" class="download">Github Repository</a></li>
-                </ul>
-            </nav>
-
-            <!-- Page Content Holder -->
-            <div id="content" style="margin-bottom: 250px;">
-
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-
-                        <div class="navbar-header">
-                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-                                <i class="glyphicon glyphicon-align-left"></i>
-                                <span>Toggle Sidebar</span>
-                            </button>
-                        </div>
-
-                    </div>
-                </nav>
-                
-    <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="page-header">
-				<h1>
-					Customers <small>API Endpoint</small>
-				</h1>
-			</div>
-			<div class="jumbotron">
-				<h2>
-					About
-				</h2>
-				<p>
-					This endpoint performs operations on the customers stored in the MongoDB database. You have to send your requests to <i>/api/customers</i>. It responds to 4 HTTP methods, GET, POST, PUT and DELETE. 
-				</p>
-				<p>
-					<a class="btn btn-primary btn-large" target="_blank" href="https://github.com/farhan787/Vidly_Movie_App">Visit Code</a>
-				</p>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<h2>
-				GET &emsp;<small>/api/customers</small>
-			</h2>
-			<p>
-				A GET request to this endpoint, returns a list of all the customers stored in the MongoDB database.
-			</p>
-			<p>
-				<a class="btn" target="_blank" href="https://vidly-app.herokuapp.com/api/customers">Send request »</a>
-			</p>
-		</div>
-		<div class="col-md-6">
-			<h2>
-				GET with id &ensp;<small>/api/customers/id</small>
-			</h2>
-			<p>
-				A GET request with the customer id to this endpoint, returns a customer that belongs to the customer id embedded in the url customerId.
-			</p>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<h2>
-				POST &emsp; <small>/api/customers</small>
-			</h2>
-			<p>
-				We can post a customer if we are authenticated user via POST request, send name and phone in the body of the request, also send x-auth-token in the request header and the value for this x-auth-token will be the authentication token, that we get from the POST method of <b><a href="auth.html">Auth</a></b> endpoint.
-			</p>
-		</div>
-		<div class="col-md-6">
-			<h2>
-				PUT &emsp; <small>/api/customers/id</small>
-			</h2>
-			<p>
-				If we are authenticated user, we can update the customer information stored in the database via PUT request by sending the new body of customer along with the x-auth-token in the request header as discussed in POST request.
-			</p>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<h2>
-				DELETE &emsp; <small>/api/customers/id</small>
-			</h2>
-			<p>
-				If we are authenticated user and admin, we can delete a customer stored in the database via DELETE request along with the customer id in the url.
-			</p>
-		</div>
-		<div class="col-md-6">
-		</div>
-	</div>
-</div>
-<!--                content ends here-->
+              </code>
             </div>
+            <div class="col-md-6">
+              <h2>PUT &emsp; <small>/api/customers/id</small></h2>
+              <p>
+                If we are authenticated user, we can update the customer
+                information stored in the database via PUT request by sending
+                the new body of customer along with the x-auth-token in the
+                request header as discussed in POST request.
+              </p>
+
+              <code class="request-body">
+                <div class="request-body-content">
+                  {<br />
+                  &nbsp;"name": "testUser1-updated-name", <br />
+                  &nbsp;"phone": "xxx-xxx-xxx-or-new-phone-number" <br />
+                  }
+                </div>
+              </code>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <h2>DELETE &emsp; <small>/api/customers/id</small></h2>
+              <p>
+                If we are authenticated user and admin, we can delete a customer
+                stored in the database via DELETE request along with the
+                customer id in the url.
+              </p>
+            </div>
+            <div class="col-md-6"></div>
+          </div>
         </div>
+        <!--                content ends here-->
+      </div>
+    </div>
 
-        <footer class="footer">
-            <p>Made By: Muhammad Farhan &copy; 2018</p>
-            <div>
-                <a target="_blank" href="https://www.github.com/farhan787" class="fa fa-github"></a>
-                <a target="_blank" href="https://www.facebook.com/farhanshah787" class="fa fa-facebook"></a>
-                <a target="_blank" href="https://www.linkedin.com/in/farhan-shah-18415b148/" class="fa fa-linkedin"></a>
-            </div>
-          </footer> 
+    <div id="footer"></div>
+    <script>
+      $('#sidebar').load('./Components/sidebar.html');
+      $('#footer').load('./Components/footer.html');
+    </script>
 
-                 <!-- jQuery CDN -->
-         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                 });
-             });
-         </script>
-    </body>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#sidebarCollapse').on('click', function() {
+          $('#sidebar').toggleClass('active');
+        });
+      });
+    </script>
+  </body>
 </html>
