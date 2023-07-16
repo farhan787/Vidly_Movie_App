@@ -2,8 +2,9 @@ const mongoose = require('mongoose')
 const Joi = require('joi')
 const Fawn = require('fawn')
 const moment = require('moment')
+const config = require('config')
 
-Fawn.init(mongoose)
+Fawn.init(config.get('db'))
 
 const rentalSchema = mongoose.Schema({
     customer: {
@@ -98,5 +99,3 @@ function validateRental(reqRental){
 module.exports = {
     Rental, validateRental
 }
-
-
